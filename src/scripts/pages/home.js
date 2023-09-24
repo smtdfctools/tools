@@ -8,7 +8,7 @@ async function loadSource() {
 
 async function loadContent(source) {
   let response = await axios({
-    url: `${base}/${source.repository}/list.json`,
+    url: `${base}/${source.repository}/info.json`,
   })
   return response.data.tools
 }
