@@ -37,7 +37,7 @@ Turtle.component("smtdfc-tool-page", async function($) {
      `
     div.addEventListener("click", function() {
       let url = new URL(window.location.href)
-      url.searchParams.set("tool",info.name)
+      url.searchParams.set("tool",info.key)
       window.location = url.href
     })
 
