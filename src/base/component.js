@@ -18,7 +18,8 @@ Turtle.component("smtdfc-tool-navbar", async function($) {
   `
 })
 
-Turtle.component("smtdfc-tool-page",async function($) {
+Turtle.component("smtdfc-tool-page", async function($) {
+  let group = $.getAttribute("group")
   let data = await getInfoFile($.getAttribute("group"))
   $.addItem = function(info, source) {
     let div = document.createElement("div")
@@ -32,14 +33,14 @@ Turtle.component("smtdfc-tool-page",async function($) {
        </div>
      `
     div.addEventListener("click", function() {
-      window.location = `${window.location.origin}${window.location.pathname}?time=${Date.now()}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
+      window.location = `${window.location.origin}${window.location.pathname}?repo=${group}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
     })
 
     $.refs.list.appendChild(div)
   }
-  
-  $.onRender = function(){
-    data.tools.forEach(t=>$.addItem(t))
+
+  $.onRender = function() {
+    data.tools.forEach(t => $.addItem(t))
   }
 
   return `
@@ -49,16 +50,20 @@ Turtle.component("smtdfc-tool-page",async function($) {
   `
 })
 
-async function loadTool(name) {
-  let ct = await import(`../tools/${name}/main.js`)
+async function loadTool(repo, name) {
+  let ct = await import(`${base}/${repo}/tools/${name}/main.js`)
   await loadToolResource(ct.requirements)
   await ct.init()
   return {}
 }
 
-let tool = getParameterByName("tool")
-if (!tool) {
-  document.body.appendChild(document.createElement("smtdfc-tool-page"))
-}else{
-  loadTool(tool)
+function initPage(group) {
+  let tool = getParameterByName("tool")
+  if (!tool) {
+    let page = document.createElement("smtdfc-tool-page")
+    page.setAttribute("group", group)
+    document.body.appendChild(page)
+  }else{
+    loadTool(group,tool)
+  }
 }
