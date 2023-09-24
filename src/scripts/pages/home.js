@@ -17,7 +17,7 @@ Turtle.component("home-page", function($) {
   $.addItem = function(info,source) {
     let div = document.createElement("div")
     div.innerHTML = `
-      <div class="tool-info mt-4 p-4 shadow d-flex align-items-center justify-content-sb">
+      <div class="fade tool-info mt-4 p-4 shadow d-flex align-items-center justify-content-sb">
         <div class="d-flex align-items-center">
           <span class="material-symbols-outlined">${info.icon ?? ""}</span>
           <h4 class="ml-1"> ${info.name} </h4>
