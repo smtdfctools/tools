@@ -1,6 +1,6 @@
 Turtle.component("smtdfc-tool-navbar", async function($) {
   if($.getAttribute("load")=="true")
-    $.setAttribute("group",await getInfoFile($.getAttribute("group")))
+    $.setAttribute("group",(await getInfoFile($.getAttribute("group"))).info.name)
 
   return ` 
    <nav class="navbar  " id="main-navbar">  
@@ -57,7 +57,7 @@ Turtle.component("smtdfc-tool-page", async function($) {
 
 async function loadTool(repo, name) {
   // https://raw.githubusercontent.com/smtdfctools/Math-tools/master/tools/simplify_expr/main.js
-  let ct = await import(`https://raw.githubusercontent.com/smtdfctools/${repo}/master/tools/${name}/main.js`)
+  let ct = await import(`${base}/${repo}/master/tools/${name}/main.js`)
   await loadToolResource(ct.requirements.resources)
   await ct.init()
   return {}
