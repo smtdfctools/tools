@@ -1,6 +1,6 @@
 Turtle.component("smtdfc-tool-navbar",async function($){
  let data = await getInfoFile($.getAttribute("group"))
-  return `
+  return ` 
    <nav class="navbar  " id="main-navbar">  
      <div class="navbar-brand">
        <h3>${data.info.name}</h3>
