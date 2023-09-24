@@ -56,7 +56,8 @@ Turtle.component("smtdfc-tool-page", async function($) {
 })
 
 async function loadTool(repo, name) {
-  let ct = await import(`${base}/${repo}/tools/${name}/main.js`)
+  // https://raw.githubusercontent.com/smtdfctools/Math-tools/master/tools/simplify_expr/main.js
+  let ct = await import(`https://raw.githubusercontent.com/smtdfctools/${repo}/master/tools/${name}/main.js`)
   await loadToolResource(ct.requirements.resources)
   await ct.init()
   return {}
