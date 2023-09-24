@@ -12,3 +12,15 @@ async function getInfoFile(group){
   })
   return response.data
 }
+
+function createScriptTag(path){
+  let script= document.querySelector("script")
+  script.src = path
+  document.body.appendChild(script)
+}
+
+async function loadToolResource(configs){
+  let jsResources = configs.js
+  jsResources.forEach(r=>createScriptTag(r))
+  return {}
+}

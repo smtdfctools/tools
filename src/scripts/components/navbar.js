@@ -1,4 +1,5 @@
 Turtle.component("main-navbar", function($) {
+  
   return `
     <div class="d-none pos-absolute line-loader loader-md loader-info" style="top:0; z-index:10000;" id="main-loader" >
       <span></span>
