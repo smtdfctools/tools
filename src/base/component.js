@@ -2,7 +2,7 @@ Turtle.component("smtdfc-tool-navbar",function($){
   return `
    <nav class="navbar  " id="main-navbar">  
      <div class="navbar-brand">
-       <h3>smtdfc tools > ${$.props.group} </h3>
+       <h3>smtdfc tools</h3>
      </div>
      <div class="navbar-contents" style="height:100%;">
         <button class="m-3 navbar-btn navbar-toggle-btn material-symbols-outlined" data-toggle="navbar" data-navbar="#main-navbar" >close</button>
