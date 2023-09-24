@@ -18,7 +18,7 @@ Turtle.component("smtdfc-tool-navbar", async function($) {
   `
 })
 
-Turtle.component("smtdfc-tool-page", function($) {
+Turtle.component("smtdfc-tool-page",async function($) {
   let data = await getInfoFile($.getAttribute("group"))
   $.addItem = function(info, source) {
     let div = document.createElement("div")
