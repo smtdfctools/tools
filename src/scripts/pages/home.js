@@ -14,7 +14,7 @@ async function loadContent(source) {
 }
 
 Turtle.component("home-page", function($) {
-  $.addItem = function(info) {
+  $.addItem = function(info,source) {
     let div = document.createElement("div")
     div.innerHTML = `
       <div class="tool-info mt-4 p-4 shadow d-flex align-items-center justify-content-sb">
@@ -25,7 +25,10 @@ Turtle.component("home-page", function($) {
         <span class="material-symbols-outlined">arrow_right_alt</span>
       </div>
     `
-
+    div.addEventListener("click", function() {
+      window.location =`${base}/${source.repository}/index.html?time=${Date.now()}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
+    })
+    
     $.refs.list.appendChild(div)
   }
 
@@ -37,7 +40,7 @@ Turtle.component("home-page", function($) {
           loadContent(source)
             .then(list => {
               list.forEach(item => {
-                $.addItem(item)
+                $.addItem(item,source)
               })
             })
         })
@@ -47,7 +50,7 @@ Turtle.component("home-page", function($) {
         app.ui.addMsg("Cannot load content ", "error", 4000)
       })
       .finally(() => {
-        
+
       })
 
   }
