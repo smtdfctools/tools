@@ -32,7 +32,7 @@ Turtle.component("smtdfc-tool-page",async function($) {
        </div>
      `
     div.addEventListener("click", function() {
-      window.location = `${window.location.origin}/${window.location.pathname}?time=${Date.now()}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
+      window.location = `${window.location.origin}${window.location.pathname}?time=${Date.now()}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
     })
 
     $.refs.list.appendChild(div)
