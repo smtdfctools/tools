@@ -52,6 +52,7 @@ Turtle.component("smtdfc-tool-page", async function($) {
 
 async function loadTool(repo, name) {
   let ct = await import(`${base}/${repo}/tools/${name}/main.js`)
+  console.log(ct)
   await loadToolResource(ct.requirements)
   await ct.init()
   return {}
