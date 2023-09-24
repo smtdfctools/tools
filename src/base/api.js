@@ -1,4 +1,4 @@
-const base = "https://smtdfctools.github.io"
+let base = "https://smtdfctools.github.io"
 async function loadSource() {
   let response = await axios({
     url: `${base}/tools/sources.json`,

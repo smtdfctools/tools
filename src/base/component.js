@@ -36,7 +36,9 @@ Turtle.component("smtdfc-tool-page", async function($) {
        </div>
      `
     div.addEventListener("click", function() {
-      window.location = `${window.location.origin}${window.location.pathname}?repo=${group}&key=${generateKey("_")+generateKey()+generateKey()+generateKey()}&tool=${info.key}`
+      let url = new URL(window.location.href)
+      url.searchParams.set("tool",info.name)
+      window.location = url.href
     })
 
     $.refs.list.appendChild(div)
