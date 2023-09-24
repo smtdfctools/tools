@@ -72,7 +72,7 @@ function initPage(group) {
     let navbar = document.createElement("smtdfc-tool-navbar")
     navbar.setAttribute("group", group)
     navbar.setAttribute("load","true")
-    document.body.appendChild(page)
+    document.body.appendChild(navbar)
     loadTool(group,tool)
   }
 }
