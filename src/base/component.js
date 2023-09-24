@@ -1,4 +1,7 @@
 Turtle.component("smtdfc-tool-navbar", async function($) {
+  if($.getAttribute("load")=="true")
+    $.setAttribute("group",await getInfoFile($.getAttribute("group")))
+
   return ` 
    <nav class="navbar  " id="main-navbar">  
      <div class="navbar-brand">
@@ -52,7 +55,6 @@ Turtle.component("smtdfc-tool-page", async function($) {
 
 async function loadTool(repo, name) {
   let ct = await import(`${base}/${repo}/tools/${name}/main.js`)
-  
   await loadToolResource(ct.requirements.resources)
   await ct.init()
   return {}
@@ -65,6 +67,10 @@ function initPage(group) {
     page.setAttribute("group", group)
     document.body.appendChild(page)
   }else{
+    let navbar = document.createElement("smtdfc-tool-navbar")
+    navbar.setAttribute("group", group)
+    navbar.setAttribute("load","true")
+    document.body.appendChild(page)
     loadTool(group,tool)
   }
 }
